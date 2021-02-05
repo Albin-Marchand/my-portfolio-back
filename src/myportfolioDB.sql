@@ -5,9 +5,6 @@ CREATE TABLE `client` (
   PRIMARY KEY (`id`)
 );
 
-
-
-
 CREATE TABLE `project` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
