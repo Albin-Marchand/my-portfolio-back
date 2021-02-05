@@ -7,9 +7,9 @@ const router = express.Router();
 
 router.post("/", (req, res) => {
   const { name } = req.body;
-  const sql = "INSERT INTO project (name)  VALUES (?)";
+  const sql = "INSERT INTO skills (name) VALUES (?)";
 
-  const newSkill = connection.query(sql, [name], (err, results) => {
+  const newSKill = connection.query(sql, [name], (err, results) => {
     if (err) {
       console.log(err);
       res.status(500).send("Error when you post your skill");
@@ -65,13 +65,13 @@ router.get("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   const isSkill = req.params.id;
   const updateSkill = req.body;
-  const sql = "UPDATE projet SET ? WHERE id=?";
+  const sql = "UPDATE skills SET ? WHERE id=?";
   connection.query(sql, [updateSkill, isSkill], (err, results) => {
     if (err) {
       res.status(500).send("Error updating a project");
     }
     return connection.query(
-      "SELECT * FROM projet WHERE id = ?",
+      "SELECT * FROM skills WHERE id = ?",
       isSkill,
       (err2, records) => {
         if (err2) {
@@ -90,7 +90,7 @@ router.put("/:id", (req, res) => {
 // DELETE BY ID
 
 router.delete("/:id", (req, res) => {
-  const sql = "DELETE FROM projet where id=?";
+  const sql = "DELETE FROM skills where id=?";
   connection.query(sql, [req.params.id], (err, results) => {
     if (err) {
       console.log(err);
